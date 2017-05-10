@@ -36,19 +36,19 @@ adViewPager.setIndicatorDrawableChecked(R.mipmap.img_banner_dot_focused) //当�
         .setTargetActivity(WebActivity.class) //点击图片跳转的webView页面
         .startPlay(3, 3);
         
-        adViewPager.addADViewPagerListener(new ADViewPager.OnCurrentPageListener() {
-            @Override
-            public void onPageSelected(int position) {
-                //每次轮播时被调用的方法
-            }
+adViewPager.addADViewPagerListener(new ADViewPager.OnCurrentPageListener() {
+    @Override
+    public void onPageSelected(int position) {
+        //每次轮播时被调用的方法
+    }
 
-            @Override
-            public boolean onClickPage(@NonNull List<String> imageUrl, @Nullable List<String> imageHref, int position) {
-                //点击图片师被调用的方法，若在此方法中处理了跳转业务，则返回值应为TRUE
-                Toast.makeText(MainActivity.this, imageUrl.get(position), Toast.LENGTH_LONG).show();
-                return false;
-            }
-        });
+    @Override
+    public boolean onClickPage(@NonNull List<String> imageUrl, @Nullable List<String> imageHref, int position) {
+        //点击图片师被调用的方法，若在此方法中处理了跳转业务，则返回值应为TRUE
+        Toast.makeText(MainActivity.this, imageUrl.get(position), Toast.LENGTH_LONG).show();
+        return false;
+    }
+});
 ```
 当轮播图资源路径为空时设置默认显示的图片，只需设置ADViewPager的背景图即可
 ```
