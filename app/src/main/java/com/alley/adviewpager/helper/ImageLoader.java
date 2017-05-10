@@ -1,4 +1,4 @@
-package com.alley.adviewpager;
+package com.alley.adviewpager.helper;
 
 import android.content.Context;
 import android.widget.ImageView;

@@ -1,4 +1,4 @@
-package com.alley.adviewpager;
+package com.alley.adviewpager.helper;
 
 import android.annotation.SuppressLint;
 import android.support.v4.view.ViewPager;
