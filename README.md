@@ -1,5 +1,6 @@
 # ADViewPager 本文重点介绍了自定义ViewPager，在以后的项目中进行快速开发，避免了写很多繁琐的代码，使得维护起来更便利。
 
+![截图](https://github.com/GitPhoenix/ADViewPager/blob/master/screen/Screenshot_20170510-151058-059.jpg)
 依赖：compile 'com.alley:ADViewPager:1.5.0'
 
 1.在布局文件中加入ADViewPager
