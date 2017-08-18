@@ -3,7 +3,7 @@ apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion "26.0.0"
 
     defaultConfig {
         minSdkVersion 14
@@ -40,7 +40,7 @@ publish {
     userOrg = 'alina'//bintray.com用户名
     groupId = 'com.alley'//jcenter上的路径
     artifactId = 'ADViewPager'//项目名称
-    publishVersion = '1.5.0'//版本号
+    publishVersion = '1.6.5'//版本号
     desc = '轮播图'//描述，不重要
-    website = 'https://github.com/GitPhoenix'//网站
+    website = 'https://github.com/GitPhoenix/ADViewPager'//网站
 }

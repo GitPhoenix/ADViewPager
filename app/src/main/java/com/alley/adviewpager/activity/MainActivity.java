@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 .setBannerUrl(imageUrl)
                 .setBannerHref(imageHref)
                 .setADLoader(new ImageLoader())
-                .startPlay(3, 3);
+                .startPlay(3 * 1000);
 
         //点击轮播图时，若直接跳转到activity，则设置setTargetActivity(WebActivity.class) 就可以了，无需注册监听adViewPager.addADViewPagerListener
         adViewPager2.setIndicatorDrawableChecked(R.mipmap.img_banner_dot_focused)
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 .setBannerHref(imageHref)
 //                .setTargetActivity(WebActivity.class)
                 .setADLoader(new ImageLoader())
-                .startPlay();
+                .startPlay(3 * 1000);
 
         adViewPager3.setIndicatorDrawableChecked(R.mipmap.img_banner_dot_focused)
                 .setIndicatorDrawableUnchecked(R.mipmap.img_banner_dot_normal)
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                 .setBannerUrl(imageUrl)
                 .setBannerHref(imageHref)
                 .setADLoader(new ImageLoader())
-                .startPlay(1, 3);
+                .startPlay(3 * 1000);
     }
 
     private void initEvent() {
@@ -105,10 +105,9 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public boolean onClickPage(@NonNull List<String> imageUrl, @Nullable List<String> imageHref, int position) {
+            public void onClickPage(@NonNull List<String> imageUrl, @Nullable List<String> imageHref, int position) {
                 //点击图片被调用的方法，若在此方法中处理了跳转业务，则返回值应为TRUE，可以跳转到Web页面，这里就不演示了
                 Toast.makeText(MainActivity.this, "点击图片所跳转的路径" + imageUrl.get(position), Toast.LENGTH_LONG).show();
-                return true;
             }
         });
 
@@ -129,9 +128,27 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public boolean onClickPage(@NonNull List<String> imageUrl, @Nullable List<String> imageHref, int position) {
-                return false;
+            public void onClickPage(@NonNull List<String> imageUrl, @Nullable List<String> imageHref, int position) {
+                imageUrl.add("http://img12.360buyimg.com/cms/jfs/t3259/133/6926144546/163293/aae4cc75/58ae9f21Nbe8a5ecb.png");
+
+                imageHref.add("https://www.baidu.com");
+
+                adViewPager3.setBannerUrl(imageUrl)
+                        .setBannerHref(imageHref)
+                        .startPlay(3 * 1000);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adViewPager3.restartPlay();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        adViewPager3.stopPlay();
     }
 }
