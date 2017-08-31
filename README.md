@@ -39,7 +39,9 @@ adViewPager.setIndicatorDrawableChecked(R.mipmap.img_banner_dot_focused) //å½“å‰
 @Override
 protected void onResume() {
     super.onResume();
-    adViewPager.restartPlay();
+    if (adViewPager.getViewPager() != null) {
+         adViewPager.restartPlay();
+    }
 }
 
 @Override
