@@ -1,5 +1,6 @@
 package com.alley.ad.widget;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Handler;
@@ -60,6 +61,7 @@ public class ADViewPager extends FrameLayout implements View.OnClickListener {
 
     private static final int HANDLE_TEXT_CHANGED_MSG = 0x001;
 
+    @SuppressLint("HandlerLeak")
     private Handler viewPagerHandler = new Handler() {
 
         @Override
@@ -248,20 +250,20 @@ public class ADViewPager extends FrameLayout implements View.OnClickListener {
      *
      * @param period 轮播的周期，单位millisecond
      */
-    public void startPlay(long period) {
+    public void start(long period) {
         this.period = period;
 
         initADViewPager();
 
-        restartPlay();
+        restart();
     }
 
     /**
      * 重启轮播
      */
-    public void restartPlay() {
-        if (isAutoPlay && imageUrls.size() > 1) {
-            stopPlay();
+    public void restart() {
+        if (isAutoPlay && imageUrls != null && imageUrls.size() > 1) {
+            stop();
             viewPagerHandler.sendEmptyMessageDelayed(HANDLE_TEXT_CHANGED_MSG, period);
         }
     }
@@ -269,7 +271,7 @@ public class ADViewPager extends FrameLayout implements View.OnClickListener {
     /**
      * 停止轮播
      */
-    public void stopPlay() {
+    public void stop() {
         if (viewPagerHandler != null) {
             viewPagerHandler.removeMessages(HANDLE_TEXT_CHANGED_MSG);
         }
@@ -451,6 +453,6 @@ public class ADViewPager extends FrameLayout implements View.OnClickListener {
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        stopPlay();
+        stop();
     }
 }

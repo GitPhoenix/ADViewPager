@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 .setBannerUrl(imageUrl)
                 .setBannerHref(imageHref)
                 .setADLoader(new ImageLoader())
-                .startPlay(3 * 1000);
+                .start(3 * 1000);
 
         //点击轮播图时，若直接跳转到activity，则设置setTargetActivity(WebActivity.class) 就可以了，无需注册监听adViewPager.addADViewPagerListener
         adViewPager2.setIndicatorDrawableChecked(R.mipmap.img_banner_dot_focused)
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 .setBannerHref(imageHref)
 //                .setTargetActivity(WebActivity.class)
                 .setADLoader(new ImageLoader())
-                .startPlay(3 * 1000);
+                .start(3 * 1000);
 
         adViewPager3.setIndicatorDrawableChecked(R.mipmap.img_banner_dot_focused)
                 .setIndicatorDrawableUnchecked(R.mipmap.img_banner_dot_normal)
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                 .setBannerUrl(imageUrl)
                 .setBannerHref(imageHref)
                 .setADLoader(new ImageLoader())
-                .startPlay(3 * 1000);
+                .start(3 * 1000);
     }
 
     private void initEvent() {
@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
 
                 adViewPager3.setBannerUrl(imageUrl)
                         .setBannerHref(imageHref)
-                        .startPlay(3 * 1000);
+                        .start(3 * 1000);
             }
         });
     }
@@ -143,12 +143,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        adViewPager3.restartPlay();
+        adViewPager3.restart();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        adViewPager3.stopPlay();
+        adViewPager3.stop();
     }
 }

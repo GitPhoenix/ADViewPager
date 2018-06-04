@@ -1,7 +1,7 @@
 # ADViewPager 本文重点介绍了自定义ViewPager，在以后的项目中进行快速开发，避免了写很多繁琐的代码，使得维护起来更便利。
 
 ![截图](https://github.com/GitPhoenix/ADViewPager/blob/master/screen/Screenshot_20170510-151058-059.jpg)
-依赖：compile 'com.alley:ADViewPager:1.6.5'
+依赖：compile 'com.alley:ADViewPager:1.6.6'
 
 1.在布局文件中加入ADViewPager
 ```
@@ -34,20 +34,20 @@ adViewPager.setIndicatorDrawableChecked(R.mipmap.img_banner_dot_focused) //当�
         .setBannerUrl(imageUrl) //图片路径
         .setBannerHref(imageHref) //点击图片跳转的路径
         .setADLoader(new ImageLoader()) // 图片加载配置
-        .startPlay(3 * 1000);
+        .start(3 * 1000);
 
 @Override
 protected void onResume() {
     super.onResume();
     if (adViewPager.getViewPager() != null) {
-         adViewPager.restartPlay();
+        adViewPager.restart();
     }
 }
 
 @Override
 protected void onPause() {
     super.onPause();
-    adViewPager.stopPlay();
+    adViewPager.stop();
 }
         
 adViewPager.addADViewPagerListener(new ADViewPager.OnCurrentPageListener() {

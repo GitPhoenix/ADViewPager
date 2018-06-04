@@ -2,24 +2,23 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.novoda.bintray-release'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "26.0.0"
+    compileSdkVersion 27
+    buildToolsVersion "27.0.3"
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 25
+        minSdkVersion 15
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     lintOptions {
         checkReleaseBuilds false
         abortOnError false
@@ -27,20 +26,17 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    testCompile 'junit:junit:4.12'
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
 
-    compile 'com.android.support:appcompat-v7:25.3.0'
+    implementation 'com.android.support:appcompat-v7:27.1.0'
 }
 
 publish {
     userOrg = 'alina'//bintray.com用户名
     groupId = 'com.alley'//jcenter上的路径
     artifactId = 'ADViewPager'//项目名称
-    publishVersion = '1.6.5'//版本号
+    publishVersion = '1.6.6'//版本号
     desc = '轮播图'//描述，不重要
     website = 'https://github.com/GitPhoenix/ADViewPager'//网站
 }
